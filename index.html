@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+    
+    .form-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .customer-order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+    
+    label {
+      display: block;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    button:hover {
+      background-color: #0056b3;
+    }
+    
+    @media (max-width: 600px) {
+      input, select {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Burrito Order Form</h2>
+    <form id="orderForm">
+      <!-- First Customer -->
+      <div class="customer-order">
+        <label for="name1">Name:</label>
+        <input type="text" id="name1" name="name" placeholder="Customer Name">
+        
+        <label for="tortilla1">Tortilla Option:</label>
+        <select id="tortilla1" name="tortilla">
+          <option value="WW">Whole Wheat</option>
+          <option value="WH">White</option>
+          <option value="GF">Gluten-Friendly</option>
+        </select>
+        
+        <label for="protein1">Protein Option:</label>
+        <select id="protein1" name="protein">
+          <option value="MC">Mild Chicken</option>
+          <option value="SC">Spicy Chicken</option>
+          <option value="JC">Jerk Chicken</option>
+          <option value="PP">Pulled Pork</option>
+          <option value="GB">Ground Beef</option>
+          <option value="VG">Veggie Ground</option>
+        </select>
+        
+        <label for="salsa1">Salsa Option:</label>
+        <select id="salsa1" name="salsa">
+          <option value="R">Red Salsa</option>
+          <option value="P">Pineapple Salsa</option>
+          <option value="J">Jalapeno Salsa</option>
+        </select>
+        
+        <label for="sauce1">Sauce Option:</label>
+        <select id="sauce1" name="sauce">
+          <option value="SC">Sour Cream</option>
+          <option value="BS">Burrito Sauce</option>
+          <option value="AC">Ancho Chipotle</option>
+          <option value="BB">Bang Bang</option>
+        </select>
+      </div>
+      <!-- Container for Additional Customers -->
+      <div id="newCustomers"></div>
+
+      <!-- Add Customer Button -->
+      <button type="button" onclick="addCustomer()">Add Another Customer</button>
+      <!-- Submit Order Button -->
+      <button type="submit">Submit Order</button>
+    </form>
+  </div>
+
+  <script>
+    let customerCount = 1; // Initialize customer count
+
+    function addCustomer() {
+      customerCount++;
+      const newCustomer = document.createElement('div');
+      newCustomer.classList.add('customer-order');
+      newCustomer.innerHTML = `
+        <label for="name${customerCount}">Name:</label>
+        <input type="text" id="name${customerCount}" name="name" placeholder="Customer Name">
+        
+        <label for="tortilla${customerCount}">Tortilla Option:</label>
+        <select id="tortilla${customerCount}" name="tortilla">
+          <option value="WW">Whole Wheat</option>
+          <option value="WH">White</option>
+          <option value="GF">Gluten-Friendly</option>
+        </select>
+        
+        <label for="protein${customerCount}">Protein Option:</label>
+        <select id="protein${customerCount}" name="protein">
+          <option value="MC">Mild Chicken</option>
+          <option value="SC">Spicy Chicken</option>
+          <option value="JC">Jerk Chicken</option>
+          <option value="PP">Pulled Pork</option>
+          <option value="GB">Ground Beef</option>
+          <option value="VG">Veggie Ground</option>
+        </select>
+        
+        <label for="salsa${customerCount}">Salsa Option:</label>
+        <select id="salsa${customerCount}" name="salsa">
+          <option value="R">Red Salsa</option>
+          <option value="P">Pineapple Salsa</option>
+          <option value="J">Jalapeno Salsa</option>
+        </select>
+        
+        <label for="sauce${customerCount}">Sauce Option:</label>
+        <select id="sauce${customerCount}" name="sauce">
+          <option value="SC">Sour Cream</option>
+          <option value="BS">Burrito Sauce</option>
+          <option value="AC">Ancho Chipotle</option>
+          <option value="BB">Bang Bang</option>
+        </select>
+      `;
+      
+      document.getElementById('newCustomers').appendChild(newCustomer); // Add new customer section
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Order submitted!'); // Placeholder for form submission logic
+    });
+  </script>
+</body>
+</html>
